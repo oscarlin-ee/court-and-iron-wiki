@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Court & Iron｜個人重訓與羽球訓練筆記庫</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Court & Iron 訓練筆記庫</h1>
+      <p class="subtitle">隨手丟進 raw/ 的練球碎念與課表紀錄，依 AGENTS.md 規則自動整理歸檔。</p>
+    </header>
+
+    <div class="filter-bar">
+      <button class="filter-btn active" data-filter="all">全部筆記</button>
+      <button class="filter-btn" data-filter="badminton">羽球筆記</button>
+      <button class="filter-btn" data-filter="strength">重訓紀錄</button>
+    </div>
+
+    <ul class="note-list" id="note-list">
+      <li class="note-card" data-category="badminton">
+        <div class="note-meta">
+          <span class="tag">羽球筆記</span>
+          <span>2026-11-12</span>
+        </div>
+        <a href="notes/doubles-rotation.html">雙打前後場輪轉與被動挑球節奏檢討</a>
+        <p class="note-summary">整理對練時後場進攻轉防守的補位空檔，以及接殺頂後場的拍面角度修正。</p>
+      </li>
+
+      <li class="note-card" data-category="strength">
+        <div class="note-meta">
+          <span class="tag">重訓紀錄</span>
+          <span>2026-11-08</span>
+        </div>
+        <a href="notes/bench-squat-log.html">上下肢分化課表：深蹲與臥推主項重量調整</a>
+        <p class="note-summary">記錄這週主項組數、組間休息時間，以及避免影響隔天羽球步法的容量控制。</p>
+      </li>
+    </ul>
+
+    <section class="log-box">
+      <h2>最近更新紀錄</h2>
+      <ul class="log-list" id="update-log">
+        <li>2026-11-12｜新增《雙打前後場輪轉與被動挑球節奏檢討》</li>
+        <li>2026-11-08｜新增《上下肢分化課表：深蹲與臥推主項重量調整》</li>
+        <li>2026-11-05｜建立專案架構與 AGENTS.md 開發規範</li>
+      </ul>
+    </section>
+  </div>
+
+  <script>
+    const buttons = document.querySelectorAll('.filter-btn');
+    const cards = document.querySelectorAll('.note-card');
+
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        buttons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const target = btn.dataset.filter;
+
+        cards.forEach(card => {
+          if (target === 'all' || card.dataset.category === target) {
+            card.style.display = 'block';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
